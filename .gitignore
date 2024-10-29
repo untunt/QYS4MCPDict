@@ -1,2 +1,4 @@
 deriver_schemas/
 deriver_schemas.js
+legacy_data/
+diff_*.tsv

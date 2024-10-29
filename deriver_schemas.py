@@ -2,11 +2,12 @@ import os
 import requests
 
 schemas_path = 'deriver_schemas/'
+os.makedirs(schemas_path, exist_ok=True)
 existing_schemas = [i.replace('.js', '') for i in os.listdir(schemas_path)]
 
 schema_urls = {}
 for url_prefix, schemas in [(
-    'https://github.com/nk2028/tshet-uinh-examples/raw/0651510/',
+    'https://github.com/nk2028/tshet-uinh-examples/raw/c0d2c4d/',
     ['tupa', 'baxter', 'karlgren', 'wangli', 'panwuyun', 'unt', 'msoeg_v8'],
 ), (
     'https://github.com/nk2028/obsolete-romanizations-examples/raw/32a2d47/',
