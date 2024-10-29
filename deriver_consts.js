@@ -176,6 +176,7 @@ const 音韻地位patch = Object.fromEntries([
   ['1830', '並三A宵平'],
   ['2767c', '澄開三仙入'],
   ['3062', '清合一灰平'],
+  ['3670', '章合三清入'],
 ].map(([小韻號, 描述]) => [小韻號, TshetUinh.音韻地位.from描述(描述)]));
 
 const 反切patch = {
@@ -266,6 +267,8 @@ const 反切patch = {
   3854: '五夾⦅洽⦆⟨冷⟩',
   // Extended:
   597: '崇⟨?⟩玄⟨?⟩',
+  1763: '作⦅子⦆⟨千⟩可',
+  3670: '之⦅志⦆⟨?⟩役',
 };
 
 const propsRimeToDelete = Object.fromEntries([
