@@ -10,6 +10,12 @@ Generate Qieyun 切韻 system (QYS) data for [MCPDict 漢字音典](https://gith
 4. Run `legacy.py` to generate `all_rimes_legacy.tsv`
 5. Run `join.py` to generate `廣韻.tsv`
 
+## Schema sources
+
+- Romanizations and reconstructions: [tshet-uinh-examples](https://github.com/nk2028/tshet-uinh-examples)
+- Obsolete representations: [obsolete-romanizations-examples](https://github.com/nk2028/obsolete-romanizations-examples)
+- Obsolete reconstructions: [initials](https://github.com/BYVoid/ytenx/blob/master/ytenx/sync/kyonh/CjengMuxNgixQim.txt) & [finals](https://github.com/BYVoid/ytenx/blob/master/ytenx/sync/kyonh/YonhMuxNgixQim.txt) from ytenx
+
 ## Other sources
 
 Patches for rime properities in `deriver_consts.js` are derived from the [discussion](https://github.com/nk2028/tshet-uinh-data/pull/8#issuecomment-2408975945) in nk2028. Some objects in `deriver_consts.js` are cited from the [code](https://github.com/untunt/qieyun-rime-table/blob/main/main.js) of the New Qieyun Rime Table.
