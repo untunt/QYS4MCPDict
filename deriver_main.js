@@ -32,7 +32,7 @@ const recon2params = {
   'msoeg': { r化元音記號: '\u02DE', 通江宕攝韻尾: 'ɴ/q', 聲調記號: '上ʔ 去h', 章組: '腭噝音 tɕ', 莊三韻母起始: '普通', 覺韻: '中元音', 宕攝入聲附加: '無' },
 };
 
-function getRime(小韻號, from小韻號 = null) {
+function getRimes(小韻號, from小韻號 = null) {
   let firstEntry = TshetUinh.資料.廣韻.get小韻(from小韻號 || 小韻號)[0];
   let 音韻地位 = 音韻地位patch[小韻號] || propsRimeToDelete[小韻號] || firstEntry.音韻地位;
   let line = {
@@ -47,14 +47,17 @@ function getRime(小韻號, from小韻號 = null) {
   Object.keys(recon2schema).forEach(recon => {
     line[recon] = recon2schema[recon](音韻地位, firstEntry.字頭, recon2params[recon]);
   });
-  return line;
+  return [line];
 }
 
 function getChars(小韻號, from小韻號 = null) {
   const lines = [];
   let entries = TshetUinh.資料.廣韻.get小韻(from小韻號 || 小韻號);
-  if (小韻號 === '2767b') entries = entries.slice(0, 1);
-  else if (小韻號 === '2767c') entries = entries.slice(1);
+  if (from小韻號) {
+    let isFirst小韻號 = 小韻號 === 小韻拆分patch[from小韻號][0][0];
+    let second小韻字頭s = 小韻拆分patch[from小韻號][1];
+    entries = entries.filter(entry => isFirst小韻號 ^ second小韻字頭s.includes(entry.字頭));
+  }
   entries.forEach(entry => {
     let { 字頭, 釋義 } = entry;
     lines.push({ 小韻號, 字頭, 釋義 });
@@ -66,20 +69,14 @@ function getChars(小韻號, from小韻號 = null) {
   return lines;
 }
 
-function getAllRimes() {
+function getAll(func) {
   let lines = [];
   for (const rimeNum of TshetUinh.資料.廣韻.iter小韻號()) {
-    lines.push(getRime(rimeNum));
-    if (rimeNum === '2767b') lines.push(getRime('2767c', rimeNum));
-  }
-  return lines;
-}
-
-function getAllChars() {
-  let lines = [];
-  for (const rimeNum of TshetUinh.資料.廣韻.iter小韻號()) {
-    lines.push(...getChars(rimeNum));
-    if (rimeNum === '2767b') lines.push(...getChars('2767c', rimeNum));
+    if (小韻拆分patch[rimeNum]) {
+      小韻拆分patch[rimeNum][0].forEach(newRimeNum => lines.push(...func(newRimeNum, rimeNum)));
+    } else {
+      lines.push(...func(rimeNum));
+    }
   }
   return lines;
 }

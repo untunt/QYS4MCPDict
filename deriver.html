@@ -4,6 +4,6 @@
 <script src="deriver_schemas.js"></script>
 <script src="deriver_main.js"></script>
 <script>
-  downloadLines(getAllRimes(), 'all_rimes.tsv');
-  downloadLines(getAllChars(), 'all_chars.tsv');
+  downloadLines(getAll(getRimes), 'all_rimes.tsv');
+  downloadLines(getAll(getChars), 'all_chars.tsv');
 </script>
