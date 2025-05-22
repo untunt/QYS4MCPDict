@@ -4,6 +4,7 @@ Generate Qieyun 切韻 system (QYS) data for [MCPDict 漢字音典](https://gith
 
 ## Process
 
+1. (Optional) Remove deriver_schemas folder and to update files
 1. Run `deriver_schemas.py` to generate `deriver_schemas.js`
 2. Open `deriver.html` to generate `all_rimes.tsv` and `all_chars.tsv` in the browser’s download directory
 3. Move the `.tsv` files into this repository

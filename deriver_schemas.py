@@ -7,11 +7,15 @@ existing_schemas = [i.replace('.js', '') for i in os.listdir(schemas_path)]
 
 schema_urls = {}
 for url_prefix, schemas in [(
-    'https://github.com/nk2028/tshet-uinh-examples/raw/c0d2c4d/',
-    ['tupa', 'baxter', 'karlgren', 'wangli', 'panwuyun', 'unt', 'msoeg_v8'],
+    'https://github.com/nk2028/tshet-uinh-examples/raw/refs/heads/main/', [
+        'tupa', 'baxter',
+        'karlgren', 'wangli', 'panwuyun', 'unt', 'msoeg_v8',
+        'position',
+    ],
 ), (
-    'https://github.com/nk2028/obsolete-romanizations-examples/raw/32a2d47/',
-    ['zihui', 'polyhedron', 'blankego'],
+    'https://github.com/nk2028/obsolete-romanizations-examples/raw/refs/heads/main/', [
+        'polyhedron', 'blankego',
+    ],
 )]:
     for schema in schemas:
         schema_urls[schema] = f'{url_prefix}{schema}.js'
@@ -42,4 +46,5 @@ js_code += '}\n'
 
 with open('deriver_schemas.js', 'w', encoding='utf-8') as f:
     f.write(js_code)
-print('schemas.js created')
+print()
+print('deriver_schemas.js created')
